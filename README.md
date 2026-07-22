@@ -31,9 +31,30 @@ in this repo.
 | `email` | Email routing (catch-all → Worker) | `zone_id`, `destination_worker`, `enabled` | `enabled` |
 | `workflows` | Workers Workflow | `name`, `script_name`, `binding` | `workflow_id` |
 | `zone` | Zone (prevent_destroy) | `domain` | `zone_id`, `name`, `name_servers` |
+| `ai-search` _(beta)_ | AI Search instance | `account_id`, `name` | `instance_id` |
+| `r2-data-catalog` _(beta)_ | R2 Data Catalog on a bucket | `account_id`, `bucket_name` | `catalog_id`, `name`, `status` |
+| `pipelines` | Pipeline (SQL) | `account_id`, `name`, `sql` | `pipeline_id` |
+| `secrets-store` | Secrets Store | `account_id`, `name` | `store_id` |
+| `containers` _(unsupported)_ | Workers Containers — no provider resource | `account_id`, `name`, `image` | _(none — manage via dashboard/API)_ |
+| `durable-objects` _(unsupported)_ | DO namespace — no standalone resource | `account_id`, `name`, `script_name` | _(none — via workers_script migrations)_ |
+| `browser-rendering` _(unsupported)_ | Browser Rendering — dashboard-only | `account_id` | _(none — via `browser` binding)_ |
+| `workers-ai` _(unsupported)_ | Workers AI — no discrete resource | `account_id` | _(none — via `ai` binding)_ |
+| `vectorize` _(unsupported)_ | Vectorize index — no provider resource | `account_id`, `name`, `dimensions`, `metric` | _(none — via wrangler/dashboard)_ |
+| `analytics-engine` _(unsupported)_ | Analytics Engine — no resource | `account_id` | _(none — via `analytics_engine` binding)_ |
+| `vpc` _(unsupported)_ | Cloudflare VPC — no provider resource | `account_id` | _(none — manage via dashboard/API)_ |
 
 Every module takes `account_id` (string) except `dns`, `email`, and `zone`,
 which are zone-scoped (`zone_id` / `domain`).
+
+### Provider support notes
+
+Modules marked **_(unsupported)_** target Cloudflare services that have **no
+Terraform resource in the `cloudflare` provider as of `~> 5.0`** (verified
+against the provider schema). Their `main.tf` contains only a `/* NOT YET
+SUPPORTED ... */` comment and documents the dashboard/API/wrangler alternative;
+their `variables.tf`/`outputs.tf` are kept as empty placeholders so the module
+directory exists and the signature is stable. Tracking resource names are
+noted in each module's `main.tf`.
 
 ## Tagging policy
 
