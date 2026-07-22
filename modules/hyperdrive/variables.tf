@@ -20,5 +20,6 @@ variable "origin" {
     scheme   = string
     user     = string
   })
-  nullable = false
+  sensitive = true
+  nullable  = false
 }
