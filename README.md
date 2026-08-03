@@ -28,6 +28,7 @@ in this repo.
 | `hyperdrive` | Hyperdrive config (Postgres) | `name`, `origin` ({database,host,password,port,scheme,user}) | `hyperdrive_id` |
 | `dns` | DNS records (for_each) | `zone_id`, `records` (list of objects) | `record_ids` |
 | `workers-domain` | Workers Custom Domain (auto-TLS/DNS) | `zone_id`, `hostname`, `service`, `environment` | `hostname` |
+| `access` | Cloudflare Access (Zero Trust) email-gated application protecting a hostname | `zone_id`, `hostname`, `allowed_emails`, `team_domain`, `session_duration`, `path` | `application_id`, `aud`, `jwks_url`, `hostname` |
 | `email` | Email routing (catch-all → Worker) | `zone_id`, `destination_worker`, `enabled` | `enabled` |
 | `workflows` | Workers Workflow | `name`, `script_name`, `binding` | `workflow_id` |
 | `zone` | Zone (prevent_destroy) | `domain` | `zone_id`, `name`, `name_servers` |
@@ -43,8 +44,8 @@ in this repo.
 | `analytics-engine` _(unsupported)_ | Analytics Engine — no resource | `account_id` | _(none — via `analytics_engine` binding)_ |
 | `vpc` _(unsupported)_ | Cloudflare VPC — no provider resource | `account_id` | _(none — manage via dashboard/API)_ |
 
-Every module takes `account_id` (string) except `dns`, `email`, and `zone`,
-which are zone-scoped (`zone_id` / `domain`).
+Every module takes `account_id` (string) except `access`, `dns`, `email`, and
+`zone`, which are zone-scoped (`zone_id` / `domain`).
 
 ### Provider support notes
 
