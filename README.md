@@ -37,8 +37,8 @@ in this repo.
 | `pipelines` | Pipeline (SQL) | `account_id`, `name`, `sql` | `pipeline_id` |
 | `secrets-store` | Secrets Store | `account_id`, `name` | `store_id` |
 | `containers` _(unsupported)_ | Workers Containers — no provider resource | `account_id`, `name`, `image` | _(none — manage via dashboard/API)_ |
-| `durable-objects` _(unsupported)_ | DO namespace — no standalone resource | `account_id`, `name`, `script_name` | _(none — via workers_script migrations)_ |
-| `browser-rendering` _(unsupported)_ | Browser Rendering — dashboard-only | `account_id` | _(none — via `browser` binding)_ |
+| `durable-objects` _(wrangler-owned)_ | DO via wrangler migrations | `account_id`, `name`, `script_name` | _(none — via wrangler)_ |
+| `browser-rendering` _(wrangler-owned)_ | Browser via wrangler binding | `account_id` | _(none — via `browser` binding)_ |
 | `workers-ai` _(unsupported)_ | Workers AI — no discrete resource | `account_id` | _(none — via `ai` binding)_ |
 | `vectorize` _(unsupported)_ | Vectorize index — no provider resource | `account_id`, `name`, `dimensions`, `metric` | _(none — via wrangler/dashboard)_ |
 | `analytics-engine` _(unsupported)_ | Analytics Engine — no resource | `account_id` | _(none — via `analytics_engine` binding)_ |
