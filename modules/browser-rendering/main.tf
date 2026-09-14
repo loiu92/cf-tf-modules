@@ -1,4 +1,4 @@
-/* NOT YET SUPPORTED by the cloudflare terraform provider (~> 5.0) — Browser
-   Rendering has no Terraform resource. Configure via the dashboard; access the
-   browser from a Worker through the `browser` binding in `workers_script`.
-   Tracking: Browser Rendering (cloudflare_browser_rendering_*). */
+/* wrangler-owned — Browser Rendering has no Terraform resource in the cloudflare
+   provider 5.x. Configure the `browser` binding in wrangler.jsonc (cf-bootstrap
+   renders it when this module is selected). Tracking: Browser Rendering
+   (cloudflare_browser_rendering_*). */
