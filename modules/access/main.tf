@@ -5,16 +5,16 @@
 # `policies` block, which is the v5 association model (the standalone
 # `cloudflare_zero_trust_access_policy` resource has no application_id link).
 #
-# The application is zone-scoped via zone_id (mutually exclusive with
-# account_id on this resource). The audience tag (`aud`) is exported so Workers
-# can verify the incoming cf-access-jwt-assertion.
+# Access entitlements are account-scoped. Prefer `account_id` over `zone_id`:
+# zone-route creates (`POST /zones/.../access/apps`) commonly 403 when the
+# token only has Account → Access: Apps and Policies Write/Edit.
 
 locals {
   domain = var.path == "" ? var.hostname : "${var.hostname}${var.path}"
 }
 
 resource "cloudflare_zero_trust_access_application" "app" {
-  zone_id          = var.zone_id
+  account_id       = var.account_id
   name             = var.hostname
   domain           = local.domain
   type             = "self_hosted"

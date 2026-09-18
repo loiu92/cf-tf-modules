@@ -28,7 +28,7 @@ in this repo.
 | `hyperdrive` | Hyperdrive config (Postgres) | `name`, `origin` ({database,host,password,port,scheme,user}) | `hyperdrive_id` |
 | `dns` | DNS records (for_each) | `zone_id`, `records` (list of objects) | `record_ids` |
 | `workers-domain` | Workers Custom Domain (auto-TLS/DNS) | `zone_id`, `hostname`, `service`, `environment` | `hostname` |
-| `access` | Cloudflare Access (Zero Trust) email-gated application protecting a hostname | `zone_id`, `hostname`, `allowed_emails`, `team_domain`, `session_duration`, `path` | `application_id`, `aud`, `jwks_url`, `hostname` |
+| `access` | Cloudflare Access (Zero Trust) email-gated application protecting a hostname | `account_id`, `hostname`, `allowed_emails`, `team_domain`, `session_duration`, `path` | `application_id`, `aud`, `jwks_url`, `hostname` |
 | `email` | Email routing (catch-all → Worker) | `zone_id`, `destination_worker`, `enabled` | `enabled` |
 | `workflows` | Workers Workflow | `name`, `script_name`, `binding` | `workflow_id` |
 | `zone` | Zone (prevent_destroy) | `domain` | `zone_id`, `name`, `name_servers` |
@@ -36,26 +36,25 @@ in this repo.
 | `r2-data-catalog` _(beta)_ | R2 Data Catalog on a bucket | `account_id`, `bucket_name` | `catalog_id`, `name`, `status` |
 | `pipelines` | Pipeline (SQL) | `account_id`, `name`, `sql` | `pipeline_id` |
 | `secrets-store` | Secrets Store | `account_id`, `name` | `store_id` |
-| `containers` _(unsupported)_ | Workers Containers — no provider resource | `account_id`, `name`, `image` | _(none — manage via dashboard/API)_ |
-| `durable-objects` _(wrangler-owned)_ | DO via wrangler migrations | `account_id`, `name`, `script_name` | _(none — via wrangler)_ |
-| `browser-rendering` _(wrangler-owned)_ | Browser via wrangler binding | `account_id` | _(none — via `browser` binding)_ |
-| `workers-ai` _(unsupported)_ | Workers AI — no discrete resource | `account_id` | _(none — via `ai` binding)_ |
-| `vectorize` _(unsupported)_ | Vectorize index — no provider resource | `account_id`, `name`, `dimensions`, `metric` | _(none — via wrangler/dashboard)_ |
-| `analytics-engine` _(unsupported)_ | Analytics Engine — no resource | `account_id` | _(none — via `analytics_engine` binding)_ |
+| `containers` _(wrangler-owned)_ | Workers Containers / Sandboxes | _(none — via wrangler)_ | _(none)_ |
+| `durable-objects` _(wrangler-owned)_ | DO via wrangler migrations | _(none — via wrangler)_ | _(none)_ |
+| `browser-rendering` _(wrangler-owned)_ | Browser via wrangler binding | _(none — via `browser` binding)_ | _(none)_ |
+| `workers-ai` _(wrangler-owned)_ | Workers AI binding | _(none — via `ai` binding)_ | _(none)_ |
+| `vectorize` _(wrangler-owned)_ | Vectorize index binding | _(none — create index via wrangler)_ | _(none)_ |
+| `analytics-engine` _(wrangler-owned)_ | Analytics Engine dataset binding | _(none — via wrangler)_ | _(none)_ |
 | `vpc` _(unsupported)_ | Cloudflare VPC — no provider resource | `account_id` | _(none — manage via dashboard/API)_ |
 
-Every module takes `account_id` (string) except `access`, `dns`, `email`, and
-`zone`, which are zone-scoped (`zone_id` / `domain`).
+Every module takes `account_id` (string) except `dns`, `email`, and `zone`
+(zone-scoped via `zone_id` / `domain`). Access is account-scoped (`account_id`)
+even though the protected hostname usually lives on a zone.
 
 ### Provider support notes
 
-Modules marked **_(unsupported)_** target Cloudflare services that have **no
-Terraform resource in the `cloudflare` provider as of `~> 5.0`** (verified
-against the provider schema). Their `main.tf` contains only a `/* NOT YET
-SUPPORTED ... */` comment and documents the dashboard/API/wrangler alternative;
-their `variables.tf`/`outputs.tf` are kept as empty placeholders so the module
-directory exists and the signature is stable. Tracking resource names are
-noted in each module's `main.tf`.
+Modules marked **_(wrangler-owned)_** have **no** discrete Terraform resource in
+the `cloudflare` provider as of `~> 5.0`. Their `main.tf` is a comment-only
+placeholder; cf-bootstrap still selects them via `--modules` and renders
+Wrangler bindings / stubs. **_(unsupported)_** modules are placeholders only
+(not selectable in cf-bootstrap yet).
 
 ## Tagging policy
 

@@ -51,3 +51,10 @@ variable "rate_limiting_limit" {
   default     = 0
   nullable    = false
 }
+
+variable "authentication" {
+  description = "Require cf-aig-authorization on gateway requests (needed for Unified Billing)."
+  type        = bool
+  default     = false
+  nullable    = false
+}
