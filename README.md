@@ -42,6 +42,7 @@ in this repo.
 | `workers-ai` _(wrangler-owned)_ | Workers AI binding | _(none — via `ai` binding)_ | _(none)_ |
 | `vectorize` _(wrangler-owned)_ | Vectorize index binding | _(none — create index via wrangler)_ | _(none)_ |
 | `analytics-engine` _(wrangler-owned)_ | Analytics Engine dataset binding | _(none — via wrangler)_ | _(none)_ |
+| `images` _(wrangler-owned)_ | Cloudflare Images Worker binding | _(none — via `images` binding)_ | _(none)_ |
 | `vpc` _(unsupported)_ | Cloudflare VPC — no provider resource | `account_id` | _(none — manage via dashboard/API)_ |
 
 Every module takes `account_id` (string) except `dns`, `email`, and `zone`
