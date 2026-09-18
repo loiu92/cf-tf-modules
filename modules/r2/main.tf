@@ -14,6 +14,6 @@ resource "cloudflare_r2_bucket_lifecycle" "lifecycle" {
   rules       = var.lifecycle_rules
 }
 
-# R2 Data Access Logs (GA): enable in the dashboard / Workers Observability —
-# no cloudflare_r2_*_access_log Terraform resource in provider 5.x yet.
-# See https://developers.cloudflare.com/r2/data-access-logs/
+# R2 Data Access Logs (GA): no provider resource yet. Select module
+# `r2-access-logs` to record intent, or enable in the dashboard:
+# https://developers.cloudflare.com/r2/buckets/data-access-logs/

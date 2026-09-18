@@ -21,6 +21,7 @@ in this repo.
 | Name | Purpose | Key inputs | Key outputs |
 | --- | --- | --- | --- |
 | `r2` | R2 bucket (+ optional lifecycle) | `name`, `location_hint`, `lifecycle_rules` | `bucket_name`, `bucket_id` |
+| `r2-access-logs` _(provider gap)_ | R2 Data Access Logs intent (dashboard until provider support) | `account_id`, `bucket_name`, `enabled` | `status`, `dashboard_hint` |
 | `kv` | Workers KV namespaces (for_each) | `namespaces` (set of titles) | `namespace_ids` (title→id) |
 | `d1` | D1 databases (for_each) | `databases` (set of names) | `database_ids` (name→uuid), `database_names` |
 | `queues` | Queues (for_each) | `queues` (set of names) | `queue_ids` (name→id) |
@@ -55,7 +56,8 @@ Modules marked **_(wrangler-owned)_** have **no** discrete Terraform resource in
 the `cloudflare` provider as of `~> 5.0`. Their `main.tf` is a comment-only
 placeholder; cf-bootstrap still selects them via `--modules` and renders
 Wrangler bindings / stubs. **_(unsupported)_** modules are placeholders only
-(not selectable in cf-bootstrap yet).
+(not selectable in cf-bootstrap yet). **_(provider gap)_** modules record
+desired state (e.g. `terraform_data`) until an API/provider resource exists.
 
 ## Tagging policy
 
