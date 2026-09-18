@@ -1,4 +1,4 @@
-/* NOT YET SUPPORTED by the cloudflare terraform provider (~> 5.0) — Vectorize
-   indexes have no Terraform resource. Create/manage via the dashboard or the
-   `wrangler vectorize` CLI. No `cloudflare_vectorize_index` resource exists as
-   of 5.x. Tracking: Vectorize (cloudflare_vectorize_index). */
+/* wrangler-owned — Vectorize indexes have no Terraform resource in provider
+   5.x (create with `wrangler vectorize create`). cf-bootstrap emits a
+   comment-only TF placeholder and renders the vectorize binding when this
+   module is selected. Tracking: Vectorize (cloudflare_vectorize_index). */

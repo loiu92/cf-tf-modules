@@ -1,5 +1,5 @@
-variable "zone_id" {
-  description = "Cloudflare zone ID for the hostname being protected."
+variable "account_id" {
+  description = "Cloudflare account ID (Access apps are account-scoped)."
   type        = string
   nullable    = false
 }

@@ -3,6 +3,7 @@
 resource "cloudflare_ai_gateway" "gateway" {
   account_id                 = var.account_id
   id                         = var.name
+  authentication             = var.authentication
   collect_logs               = var.collect_logs
   cache_invalidate_on_update = var.cache_invalidate_on_update
   cache_ttl                  = var.cache_ttl

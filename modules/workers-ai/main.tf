@@ -1,5 +1,4 @@
-/* NOT YET SUPPORTED by the cloudflare terraform provider (~> 5.0) as a discrete
-   resource — Workers AI is accessed from a Worker via the `ai` binding on a
-   `cloudflare_workers_script`, or the REST API. There is no
-   `cloudflare_workers_ai_*` resource to manage as of 5.x.
-   Tracking: Workers AI (cloudflare_workers_ai_*). */
+/* wrangler-owned — Workers AI is accessed via the Worker `ai` binding (no
+   discrete cloudflare_workers_ai_* resource in provider 5.x). cf-bootstrap
+   emits a comment-only TF placeholder and renders the binding + /ai stub route
+   when this module is selected. Tracking: Workers AI (ai binding). */
