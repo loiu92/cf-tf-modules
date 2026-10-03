@@ -8,7 +8,7 @@ projects via Terragrunt.
 Source pattern (note the **`//modules/<name>`** subpath and the pinned `ref`):
 
 ```hcl
-source = "github::lucas-ruelle/cf-tf-modules//modules/r2?ref=v0.1.0"
+source = "git::https://github.com/loiu92/cf-tf-modules.git//modules/r2?ref=v0.8.0"
 ```
 
 The consuming project supplies the `cloudflare` provider configuration
@@ -17,6 +17,14 @@ constraints and never a `provider "cloudflare" {}` block. No credentials live
 in this repo.
 
 ## Modules
+
+`modules/application` composes R2/KV/D1/Queues for `auth-dashboard`, `api-mcp`,
+and `queued-processing`. It returns exact Worker names and Wrangler-compatible
+bindings for one selected environment. See the [working example](examples/application/README.md).
+This new module requires a new release tag; it is not available at `v0.8.0`.
+Existing module resource logic and input/output signatures remain unchanged.
+Run `make check` for architecture checks, formatting, validation, and mocked
+Terraform recipe tests. No credentials or remote resource writes are needed.
 
 | Name | Purpose | Key inputs | Key outputs |
 | --- | --- | --- | --- |
