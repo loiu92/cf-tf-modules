@@ -69,6 +69,28 @@ desired state (e.g. `terraform_data`) until an API/provider resource exists.
 - New optional inputs/outputs bump the **MINOR**. Internal-only changes bump
   the **PATCH**.
 
+## Executable module contracts
+
+`contracts/modules.json` is generated from the actual HCL sources of all modules. It records
+required input types, nullability, sensitivity, outputs, resource ownership, Wrangler binding
+contracts and per-module source hashes. No credentials or default values are serialized.
+
+```sh
+go run ./cmd/module-contracts         # regenerate after source changes
+go run ./cmd/module-contracts --check # reject artifact drift
+go test -race ./...
+```
+
+The shared Go `contracts` package lets cf-bootstrap inspect an exact fetched revision before
+provisioning. It uses Terraform-compatible type conversion and optional object defaults, validates
+required/unknown arguments and checks bindings per environment. JSON Terraform sources and
+nonregular source files fail explicitly until supported. This is an interface gate; Terraform
+validation/plan still verifies providers and variable validation expressions.
+
+Workflows can be Terraform-owned for an existing script or Wrangler-owned for a fresh deployment.
+R2 access logs record desired state but still require manual dashboard enablement. VPC remains
+manual. Binding presence alone never implies that a Terraform resource is provisioned.
+
 ## Layout
 
 ```
