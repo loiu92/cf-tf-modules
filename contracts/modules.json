@@ -1,0 +1,1017 @@
+{
+  "version": 1,
+  "modules": {
+    "access": {
+      "sha256": "6996e633b406271a27939b8e0961d65c83ee58802baf251997c8ae02483eb4e3",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "allowed_emails": {
+          "type": "set(string)",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "hostname": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "path": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "session_duration": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "team_domain": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "application_id": {
+          "sensitive": false
+        },
+        "aud": {
+          "sensitive": false
+        },
+        "hostname": {
+          "sensitive": false
+        },
+        "jwks_url": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_zero_trust_access_application.app"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "ai-gateway": {
+      "sha256": "7018a8cf923489e656ef377fb11b1d52a93136026607051edfa98929a6be2060",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "authentication": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "cache_invalidate_on_update": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "cache_ttl": {
+          "type": "number",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "collect_logs": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "logpush": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "rate_limiting_interval": {
+          "type": "number",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "rate_limiting_limit": {
+          "type": "number",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "gateway_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_ai_gateway.gateway"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "ai-search": {
+      "sha256": "b2fcc95b73744c50185ae3f5e49c479a5814b791260aca65557d63900a4fe846",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "instance_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_ai_search_instance.instance"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "analytics-engine": {
+      "sha256": "6e561b56fe64e24aa1873e3b0d4d01e7594b330e2055f3e0b4dfc1bd4d72a2af",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "analytics_engine_datasets",
+        "names": [
+          "ANALYTICS"
+        ]
+      }
+    },
+    "browser-rendering": {
+      "sha256": "3349efb3f6bda3dc2cb479bfb764b3150bcb3394f7e7759ab84f7841d8750a63",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "browser",
+        "names": [
+          "BROWSER"
+        ]
+      }
+    },
+    "containers": {
+      "sha256": "ce4db6786c1cc0dc3835a58afc09c0a59dc9ab0d45b52fc9c5f58ee12d422f86",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "image": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "durable_objects.bindings",
+        "names": [
+          "APP_CONTAINER"
+        ]
+      }
+    },
+    "d1": {
+      "sha256": "4032279c21ae2ec2a8d8e1b4a09cfef24bfcc90e751897f5c94be147d8dd431c",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "databases": {
+          "type": "set(string)",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "database_ids": {
+          "sensitive": false
+        },
+        "database_names": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_d1_database.db"
+      ],
+      "owners": [
+        "terraform"
+      ],
+      "binding": {
+        "path": "d1_databases",
+        "names": [
+          "DB"
+        ]
+      }
+    },
+    "dns": {
+      "sha256": "c3b3fe26c9d3990d0d6148c69fc8c71b4fd39b51757f1f8b84a36091a4c2c09b",
+      "variables": {
+        "records": {
+          "type": "list(object({\n    name     = string\n    type     = string\n    content  = string\n    ttl      = optional(number, 1)\n    proxied  = optional(bool, true)\n    priority = optional(number)\n  }))",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "zone_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "record_ids": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_dns_record.record"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "durable-objects": {
+      "sha256": "b41d937cc7393e12dfe88c2e2feaf2164fca9ee8ded54e8c69f0c5d42d4ff7a3",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "script_name": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "durable_objects.bindings",
+        "names": [
+          "COUNTER",
+          "VoiceAgent"
+        ]
+      }
+    },
+    "email": {
+      "sha256": "cd3198a1701ffc7430c69659497b58ba3a63d799221c8503f93b7fee567bd1d6",
+      "variables": {
+        "destination_worker": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "enabled": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "rules": {
+          "type": "list(object({\n    name          = string\n    matcher_type  = string\n    matcher_value = optional(string)\n    action_type   = string\n    action_value  = optional(list(string))\n  }))",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "zone_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "enabled": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_email_routing_rule.catch_all",
+        "cloudflare_email_routing_rule.custom",
+        "cloudflare_email_routing_settings.settings"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "hyperdrive": {
+      "sha256": "66f41756ec0f35878c2b8ad98d634b699dd06008ab20fc82a4fb6645414b2c1b",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "origin": {
+          "type": "object({\n    database = string\n    host     = string\n    password = string\n    port     = number\n    scheme   = string\n    user     = string\n  })",
+          "required": true,
+          "sensitive": true,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "hyperdrive_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_hyperdrive_config.config"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "images": {
+      "sha256": "bdc121eba49fc45b081927d4f286eb32c86bfe1f10dad2ef714432d1b5c30254",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "images",
+        "names": [
+          "IMAGES"
+        ]
+      }
+    },
+    "kv": {
+      "sha256": "bd437a4b5a77b5ab6f9b7c4041a31d3acb339b89a51ffa5581f8c534384ecfe0",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "namespaces": {
+          "type": "set(string)",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "namespace_ids": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_workers_kv_namespace.kv"
+      ],
+      "owners": [
+        "terraform"
+      ],
+      "binding": {
+        "path": "kv_namespaces",
+        "names": [
+          "CACHE"
+        ]
+      }
+    },
+    "pipeline-sink": {
+      "sha256": "12b6cbcb1089d68c6e1e0ba44eeaad2617982e046d7a636109a8627e70a29e40",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "bucket": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "format": {
+          "type": "object({ type = string })",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "table_name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "token": {
+          "type": "string",
+          "required": true,
+          "sensitive": true,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "sink_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_pipeline_sink.sink"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "pipeline-stream": {
+      "sha256": "07bc7d369991c8230bcddcfa288cf05d791d848db7aa70a6151fbea97177e24b",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "fields": {
+          "type": "list(object({\n    name     = string\n    type     = string\n    required = optional(bool, false)\n  }))",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "format": {
+          "type": "object({ type = string })",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "http_enabled": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "worker_binding_enabled": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        }
+      },
+      "outputs": {
+        "endpoint": {
+          "sensitive": false
+        },
+        "stream_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_pipeline_stream.stream"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "pipelines": {
+      "sha256": "fde16174c25e11ba02715e9f99ff5221789f06e740e7b09a2321e0764e6db701",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "sql": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "pipeline_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_pipeline.pipeline"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "queues": {
+      "sha256": "0accd511832cd0b933e21550a5af1fb5a371fdcc47f154baf8569d103cca305b",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "queues": {
+          "type": "set(string)",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "queue_ids": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_queue.queue"
+      ],
+      "owners": [
+        "terraform"
+      ],
+      "binding": {
+        "path": "queues.producers",
+        "names": [
+          "JOBS"
+        ]
+      }
+    },
+    "r2": {
+      "sha256": "b1f2f4bd9c18e0344649f5154a8e7d08f3493b5fb7c947861cb483e9e13f5b95",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "lifecycle_rules": {
+          "type": "any",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "location_hint": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "bucket_id": {
+          "sensitive": false
+        },
+        "bucket_name": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_r2_bucket.bucket",
+        "cloudflare_r2_bucket_lifecycle.lifecycle"
+      ],
+      "owners": [
+        "terraform"
+      ],
+      "binding": {
+        "path": "r2_buckets",
+        "names": [
+          "DATA"
+        ]
+      }
+    },
+    "r2-access-logs": {
+      "sha256": "44ad1f0b222ac0315bd01d0af00418476f477d4b452d4491636c59bcf0665126",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "bucket_name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "enabled": {
+          "type": "bool",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "bucket_name": {
+          "sensitive": false
+        },
+        "dashboard_hint": {
+          "sensitive": false
+        },
+        "enabled": {
+          "sensitive": false
+        },
+        "status": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "terraform_data.data_access_logs"
+      ],
+      "owners": [
+        "terraform"
+      ],
+      "manual": true
+    },
+    "r2-data-catalog": {
+      "sha256": "85281692fc26720246720b68368bdd9540fa8ba871c1ef2d2b8fb90cacdacfa4",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "bucket_name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "catalog_id": {
+          "sensitive": false
+        },
+        "name": {
+          "sensitive": false
+        },
+        "status": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_r2_data_catalog.catalog"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "secrets-store": {
+      "sha256": "cc2a47a65d80f01a64e282eba842d6afe4194228405511e47e92de089a4d8a6e",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "store_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_secrets_store.store"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "vectorize": {
+      "sha256": "d3013714a9fc69a91e9b5c0bd582acea72418693f8b598bb49b0e4e07aeaec67",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "dimensions": {
+          "type": "number",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "metric": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "vectorize",
+        "names": [
+          "VECTORIZE"
+        ]
+      }
+    },
+    "vpc": {
+      "sha256": "22a85870be4504024083e3e100dae5cccca83833a002b6df0ee6c8f0d4443d92",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "manual"
+      ],
+      "manual": true
+    },
+    "workers-ai": {
+      "sha256": "eec1f78e97a382af75e2d6d1c6d4c31fa890bf73c25d45b219cd57d2faade784",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {},
+      "resources": [],
+      "owners": [
+        "wrangler"
+      ],
+      "binding": {
+        "path": "ai",
+        "names": [
+          "AI"
+        ]
+      }
+    },
+    "workers-domain": {
+      "sha256": "2cf0b310ab647eb890d7a5f515c0be7fcdc3899400497d121a4de15bd6ef2108",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "environment": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "hostname": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "service": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "zone_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "hostname": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_workers_custom_domain.domain"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    },
+    "workflows": {
+      "sha256": "c856d8986aedff87debbff5146f6f7dc2beb7dae5253205e1dc2991de824a40a",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "binding": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": true
+        },
+        "class_name": {
+          "type": "string",
+          "required": false,
+          "sensitive": false,
+          "nullable": false
+        },
+        "name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "script_name": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "workflow_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_workflow.workflow"
+      ],
+      "owners": [
+        "terraform",
+        "wrangler"
+      ],
+      "binding": {
+        "path": "workflows",
+        "names": [
+          "APP_WORKFLOW"
+        ]
+      }
+    },
+    "zone": {
+      "sha256": "a6ea94d1c54271ebf61cf203aa7b184a520be31fc3565b3cd1d48f797792ebb9",
+      "variables": {
+        "account_id": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        },
+        "domain": {
+          "type": "string",
+          "required": true,
+          "sensitive": false,
+          "nullable": false
+        }
+      },
+      "outputs": {
+        "name": {
+          "sensitive": false
+        },
+        "name_servers": {
+          "sensitive": false
+        },
+        "zone_id": {
+          "sensitive": false
+        }
+      },
+      "resources": [
+        "cloudflare_zone.zone"
+      ],
+      "owners": [
+        "terraform"
+      ]
+    }
+  }
+}
