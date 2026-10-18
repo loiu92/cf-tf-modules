@@ -29,7 +29,7 @@ in this repo.
 | `hyperdrive` | Hyperdrive config (Postgres) | `name`, `origin` ({database,host,password,port,scheme,user}) | `hyperdrive_id` |
 | `dns` | DNS records (for_each) | `zone_id`, `records` (list of objects) | `record_ids` |
 | `workers-domain` | Workers Custom Domain (auto-TLS/DNS) | `zone_id`, `hostname`, `service`, `environment` | `hostname` |
-| `access` | Cloudflare Access (Zero Trust) email-gated application protecting a hostname | `account_id`, `hostname`, `allowed_emails`, `team_domain`, `session_duration`, `path` | `application_id`, `aud`, `jwks_url`, `hostname` |
+| `access` | Cloudflare Access (Zero Trust) email-gated application protecting a hostname; optional Managed OAuth (Access as OAuth AS, e.g. remote MCP) and Service Auth for service tokens | `account_id`, `hostname`, `allowed_emails`, `team_domain`, `session_duration`, `path`, `managed_oauth`, `allow_service_tokens` | `application_id`, `aud`, `jwks_url`, `hostname` |
 | `email` | Email routing (catch-all → Worker) | `zone_id`, `destination_worker`, `enabled` | `enabled` |
 | `workflows` | Workers Workflow | `name`, `script_name`, `binding` | `workflow_id` |
 | `zone` | Zone (prevent_destroy) | `domain` | `zone_id`, `name`, `name_servers` |
