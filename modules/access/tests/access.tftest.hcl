@@ -38,3 +38,14 @@ run "oauth_and_service_tokens" {
     error_message = "redirect uris wrong"
   }
 }
+
+run "oauth_rejects_path_scope" {
+  command = plan
+  variables {
+    path          = "/mcp"
+    managed_oauth = { allowed_redirect_uris = ["https://claude.ai/api/mcp/auth_callback"] }
+  }
+  expect_failures = [
+    cloudflare_zero_trust_access_application.app,
+  ]
+}

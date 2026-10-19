@@ -55,4 +55,12 @@ resource "cloudflare_zero_trust_access_application" "app" {
       allowed_uris           = var.managed_oauth.allowed_redirect_uris
     }
   }
+
+  lifecycle {
+    # Cloudflare rejects "domain can not have a path if oauth is configured".
+    precondition {
+      condition     = var.managed_oauth == null || var.path == ""
+      error_message = "managed_oauth requires path == \"\" (Access Managed OAuth is hostname-scoped)."
+    }
+  }
 }

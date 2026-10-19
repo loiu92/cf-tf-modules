@@ -3,7 +3,8 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "cloudflare/cloudflare"
-      version = "~> 5.0"
+      # oauth_configuration on zero_trust_access_application landed in 5.19.
+      version = ">= 5.19.0, < 6.0.0"
     }
   }
 }

@@ -11,7 +11,7 @@ variable "hostname" {
 }
 
 variable "path" {
-  description = "Optional path appended to hostname to scope the app, e.g. /admin. Defaults to the whole hostname."
+  description = "Optional path appended to hostname to scope the app, e.g. /admin. Defaults to the whole hostname. Must be empty when managed_oauth is set (Cloudflare rejects path + OAuth)."
   type        = string
   default     = ""
 }
